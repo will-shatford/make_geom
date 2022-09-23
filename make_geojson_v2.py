@@ -10,6 +10,7 @@
 #__email__ = "willshatford@gmail.com"
 #__status__ = "Production"
 #
+#Python 3.6
 
 from __future__ import division
 from __future__ import print_function
