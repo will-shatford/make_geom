@@ -15,7 +15,7 @@ The program can be altered for your geom enabled database.  Please share.
     sometimes it is also good to simplify the image, or push the outline into the water.
 
 You'll add some Lat/Long to something like this example, for the included google maps for Howrah, Tasmania, Australia (Howrah.png):
-	python make_geojson_v2.py -f "Howrah" -i "41" -c "-42.882600, 147.409223" -s "-42.865935, 147.405960" -e "-42.906183, 147.416611"
+	python make_geojson_v2.py -f "Howrah" -c "-42.882600, 147.409223" -s "-42.865935, 147.405960" -e "-42.906183, 147.416611"
 
     -f is the name of the png file (without the .png)
     -c is the center point, used to create the geom_pt, that is helpful for a lot a geom comparisons.
