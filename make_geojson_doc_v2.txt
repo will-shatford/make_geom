@@ -1,0 +1,37 @@
+make_geojson.py
+
+If you can not find a geom at the geom websites (EX, http://global.mapit.mysociety.org/).
+The make_geojson.py program scans a screen shot of a google map that shows a geom outline and outputs a geom
+file ready to insert into a databases, in this case postgres.
+The program can be altered for your geom enabled database.  Please share.
+
+1.  display a google map for the city or region of interest. it must have a red outline of the geom.
+2.  make sure the full geom outline is visible (with at least a few pixels border padding).
+3.  take a screenshot, CTRL-PrtSc or equivlent.  It needs to be full hi-res color png file (8-bit RGB).
+    something like Windows Snipping Tool also works, and eliminates step 4.
+4.  take this png file and crop to get just the bordered area (with at least a few pixels padding border)
+5.  edit the image to fill-in as best as possible gaps in the red-outline.  Use solid red.
+    the program can fill-in small gaps, but not large gaps.
+    sometimes it is also good to simplify the image, or push the outline into the water.
+
+You'll add some Lat/Long to something like this example, for the included google maps for Howrah, Tasmania, Australia (Howrah.png):
+	python make_geojson_v2.py -f "Howrah" -i "41" -c "-42.882600, 147.409223" -s "-42.865935, 147.405960" -e "-42.906183, 147.416611"
+
+    -f is the name of the png file (without the .png)
+    -c is the center point, used to create the geom_pt, that is helpful for a lot a geom comparisons.
+    -s is the highest point in the image. if top is flat, it is the right-most coordinate.
+    -e is the lowest point. if the bottom is flat, it is the left-most coordinate.
+        -s and -e are used to scale between pixels and Lat/Long
+
+6.  run the program...
+    review the generated _transverse.png file to make sure the green lines follows what you expected.
+        more gaps might need to be corrected.
+        these can sometimes can be easily done on the _prunded.png file. if so, just re-run the program with a -p parameter.
+    review the .geojson file at http://geojson.io to make sure the map covers the expected area.
+        if shifted, or out of scale, the -s and/or -e coordinates need to be adjusted.
+
+7.  a .geom file is generated, that can easily be INSERT into a postgres table.
+    Just cut and paste into pgAdmin. (I like DBeaver)
+    You can add to the insert code if you'd like to add items, such as added_date, etc.
+
+8.  a geom.geom file is also generated that is just the geom.
