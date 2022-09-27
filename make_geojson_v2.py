@@ -9,8 +9,9 @@
 #__maintainer__ = "Will Shatford"
 #__email__ = "willshatford@gmail.com"
 #__status__ = "Production"
+#GNU Lesser General Public License, version 2.1
 #
-#Python 3.6
+#Originally developed with Python 3.6
 
 from __future__ import division
 from __future__ import print_function
